@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tố</title>
+    
+</head>
+<body>
+    <h1 style="display: block;">Kiểm tra số nguyên tố</h1>
+    <script>
+        function isPrime(number) {
+            if (number <= 1) {
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function checkPrimeNumbers() {
+            var numbers = [];
+            var primes = [];
+
+            for (var i = 1; i <= 10; i++) {
+                var userInput = parseInt(prompt("Nhập số nguyên thứ " + i + ": "));
+
+                // Kiểm tra số đã được nhập trước đó chưa
+                if (numbers.includes(userInput)) {
+                    alert("Số đã bị trùng. Vui lòng nhập một số nguyên khác.");
+                    i--;
+                } else {
+                    numbers.push(userInput);
+
+                    if (isPrime(userInput)) {
+                        primes.push(userInput);
+                    }
+                }
+            }
+
+            if (primes.length === 0) {
+                document.write("Không có số nguyên tố trong danh sách.");
+            } else {
+                document.write("Các số nguyên tố trong danh sách là: " + primes.join(", "));
+            }
+        }
+
+        checkPrimeNumbers();
+    </script>
+</body>
+</html>
